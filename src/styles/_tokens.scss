@@ -1,0 +1,60 @@
+// Design tokens. Import into any SFC style block with:
+//   @use 'tokens' as *;
+
+@use 'sass:color';
+
+// ---- Brand -----------------------------------------------------------------
+$color-primary:   #b8e5ff; // pale blue
+$color-secondary: #c9c2f0; // TODO placeholder -- swap when decided
+$color-accent:    #ffd9a8; // TODO placeholder -- swap when decided
+
+// ---- Neutrals --------------------------------------------------------------
+$color-bg:      #f7fafc; // page ground
+$color-surface: #fff;    // inputs
+$color-text:    #1f2933;
+$color-border:  #d7dde2;
+
+// ---- Semantic --------------------------------------------------------------
+// Primary is pale, so anything sitting on it needs dark ink, not white.
+$color-on-primary: $color-text;
+// Derived so it keeps tracking primary when the hex above changes.
+$color-focus:      color.adjust($color-primary, $lightness: -38%);
+
+$color-success: #2f6b4f;
+$color-error:   #a33a30;
+
+// ---- Spacing ---------------------------------------------------------------
+$space-xxs:  6px;
+$space-xs:   8px;
+$space-sm:  10px;
+$space-md:  12px;
+$space-lg:  16px;
+$space-xl:  20px;
+$space-xxl: 24px;
+
+// ---- Typography ------------------------------------------------------------
+$font-family:      system-ui, -apple-system, 'Segoe UI', sans-serif;
+$font-size-sm:     14px;
+$font-size-base:   16px;
+$font-size-md:     18px;
+$font-size-lg:     24px;
+$font-size-xl:     32px;
+$font-size-xxl:    44px; // hero title, wide screens
+$font-weight-bold: 600;
+$line-height:      1.5;
+
+// ---- Borders & shape -------------------------------------------------------
+$border-width: 1px;
+$radius:       6px;
+$focus-width:  2px;
+
+// ---- Layout ----------------------------------------------------------------
+$form-max-width:    416px;
+$content-max-width: 640px;
+$page-padding:      $space-lg; // side gutter on phones
+$page-padding-wide: $space-xxl;
+$section-gap:       48px;
+$section-gap-wide:  72px;
+
+// ---- Breakpoints -----------------------------------------------------------
+$bp-sm: 640px;
