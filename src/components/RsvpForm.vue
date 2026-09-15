@@ -35,12 +35,12 @@
           v-model.trim="relationOf"
           type="text"
           aria-label="of whom"
-          placeholder="Ash, Ethan, the family…"
+          placeholder="Ash, Ethan, something..."
         />
       </div>
 
       <label for="dietary">Dietary requirements</label>
-      <input id="dietary" v-model.trim="dietary" type="text" placeholder="Allergies, preferences, or none" />
+      <input id="dietary" v-model.trim="dietary" type="text" placeholder="Allergies, halal, vegetarian, or none" />
 
       <label for="physical-invite">Would you like a physical invite?</label>
       <select id="physical-invite" v-model="physicalInvite">
@@ -67,12 +67,36 @@ import { computed, ref } from 'vue'
 // Injected at build time: from .env locally, from the GAS_URL repo secret in CI.
 const GAS_URL = import.meta.env.GAS_URL
 
-const relationOptions = ['friend', 'cousin', 'colleague', 'neighbour', 'family friend', 'plus one']
-const inviteOptions = ['for myself', 'for my family', 'no thanks, save your pennies']
+const relationOptions = [
+  'friend',
+  'relative',
+  'colleague',
+  'ex-colleague',
+  'neighbour',
+  'family friend',
+  'plus one',
+  'baby',
+  'owner',
+  'pet',
+  'manager',
+  'acquaintance',
+  'acquaintance of an acquaintance',
+  'hired clown', 
+  'ex-partner',
+  'ex-friend',
+  'ex-aquaintance',
+  'ex-neighbour',
+  'x-men',
+  'fishball',
+  'macaroni',
+  'bread',
+  'placeholder'
+]
+const inviteOptions = ['for myself', 'for my family', "no thanks, save Ethan's money"]
 
 const name = ref('')
 const rsvp = ref('')
-const group = ref('bride')
+const group = ref('groom')
 const relationType = ref('')
 const relationOf = ref('')
 const dietary = ref('')

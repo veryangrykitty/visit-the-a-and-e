@@ -13,8 +13,7 @@
 
     <!-- PLACEHOLDER contact numbers -->
     <p class="faq__footer">
-      More questions? Find us at <strong>+65 0000 0000</strong> (Ash) or
-      <strong>+65 0000 0000</strong> (Ethan).
+      More questions? Ask google.
     </p>
   </section>
 </template>
@@ -27,7 +26,7 @@ const faqs = [
     a: [
       {
         who: '',
-        text: 'Come by at 11:30 am for canapés and mocktails at the Pavilion Foyer, then doors open at 12:00 pm.',
+        text: 'Come by at 11:30am for canapés and mocktails at the Pavilion Foyer. Doors open at 12:00pm.',
       },
     ],
   },
@@ -36,7 +35,7 @@ const faqs = [
     a: [
       {
         who: '',
-        text: "Yes, and there are complimentary coupons at the reception table while they last. If you're planning to drink with us, do take a ride or the train instead.",
+        text: "Yes, there are complimentary coupons at the reception table while they last.\nIf you're planning to drink with us, a friendly-neighbourhood-private-hired-driver would love to drive you home.",
       },
     ],
   },
@@ -44,7 +43,7 @@ const faqs = [
     q: 'What should I wear?',
     a: [
       { who: 'Ash', text: "Surprise us. Just don't come naked." },
-      { who: 'Ethan', text: 'PLACEHOLDER — your answer here.' },
+      { who: 'Ethan', text: 'Delight us. Come naked.' },
     ],
   },
   {
@@ -63,12 +62,15 @@ const faqs = [
         who: 'Ash',
         text: "Don't worry about it. Just come, eat well, and enjoy the day with us.",
       },
-      { who: 'Ethan', text: 'PLACEHOLDER — your answer here.' },
+      { who: 'Ethan', text: 'Could use a lamborghini.' },
     ],
   },
   {
     q: 'When does it end?',
-    a: [{ who: 'Ash', text: "We'll set you free by 4:00 pm." }],
+    a: [
+      { who: 'Ash', text: "We'll set you free by 3:30 pm." },
+      { who: 'Ethan', text: "When I get my lamborghini." },
+    ],
   },
   {
     q: 'What if I get bored?',

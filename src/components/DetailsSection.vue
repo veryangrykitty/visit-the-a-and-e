@@ -12,15 +12,11 @@
         <dt>Where</dt>
         <!-- PLACEHOLDER venue address -->
         <dd>
-          The Pavilion<br />
-          123 Placeholder Road<br />
-          Singapore 000000
+          Conrad Singapore Marina Bay<br />
+          The Pavilion, 4th floor by the pool<br />
+          2 Temasek Blvd<br />
+          Singapore 038982
         </dd>
-      </div>
-      <div>
-        <dt>Dress code</dt>
-        <!-- PLACEHOLDER -->
-        <dd>Garden formal. Comfortable shoes — there's grass.</dd>
       </div>
     </dl>
 
@@ -39,8 +35,8 @@
 const timeline = [
   { time: '11:30 am', what: 'Canapés and mocktails at the Pavilion Foyer' },
   { time: '12:00 pm', what: 'Doors open' },
-  { time: '1:00 pm', what: 'Lunch is served' },
-  { time: '4:00 pm', what: 'We set you free' },
+  { time: '12:20 pm', what: 'Lunch is served' },
+  { time: '3:30 pm', what: 'We set you free' },
 ]
 </script>
 
