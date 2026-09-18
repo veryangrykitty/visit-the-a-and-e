@@ -21,8 +21,16 @@
     </dl>
 
     <h3>Timeline</h3>
+    <h2>For the folks</h2>
     <ol class="timeline">
-      <li v-for="item in timeline" :key="item.time">
+      <li v-for="item in folksTimeline" :key="item.time">
+        <span class="timeline__time">{{ item.time }}</span>
+        <span class="timeline__what">{{ item.what }}</span>
+      </li>
+    </ol>
+    <h2>For the normies</h2>
+    <ol class="timeline">
+      <li v-for="item in normalTimeline" :key="item.time">
         <span class="timeline__time">{{ item.time }}</span>
         <span class="timeline__what">{{ item.what }}</span>
       </li>
@@ -31,8 +39,11 @@
 </template>
 
 <script setup>
-// Times are from the FAQ; the 1:00pm entry is a PLACEHOLDER.
-const timeline = [
+const folksTimeline = [
+  { time: '10:30 am', what: 'Tea ceremony' },
+  { time: '11:00 am', what: 'Solemnisation' },
+]
+const normalTimeline = [
   { time: '11:30 am', what: 'Canapés and mocktails at the Pavilion Foyer' },
   { time: '12:00 pm', what: 'Doors open' },
   { time: '12:20 pm', what: 'Lunch is served' },

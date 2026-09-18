@@ -6,7 +6,7 @@
     <RsvpForm />
     <FaqSection />
 
-    <footer class="page__footer">Ash &amp; Ethan · 12.12.2026</footer>
+    <footer class="page__footer">Ashlyn &amp; Ethan · 12.12.2026</footer>
   </div>
 </template>
 

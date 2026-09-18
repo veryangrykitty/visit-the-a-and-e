@@ -1,5 +1,13 @@
 @use 'tokens' as *;
 
+*,
+*::before,
+*::after {
+  // Border-box everywhere so `width: 100%` + side padding can't overflow
+  // the viewport (the page wrapper relies on this for its mobile gutter).
+  box-sizing: border-box;
+}
+
 :root {
   color-scheme: light;
 }

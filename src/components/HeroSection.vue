@@ -5,7 +5,7 @@
 
     <div class="hero__caption">
       <p class="hero__eyebrow">We're getting married</p>
-      <h1 class="hero__title">Ash <span>&amp;</span> Ethan</h1>
+      <h1 class="hero__title">Ashlyn <span>&amp;</span> Ethan</h1>
       <!-- PLACEHOLDER date -- "12.12" inferred from the FAQ. -->
       <p class="hero__date">Saturday, 12 December 2026</p>
     </div>

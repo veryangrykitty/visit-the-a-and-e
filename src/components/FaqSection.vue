@@ -35,7 +35,7 @@ const faqs = [
     a: [
       {
         who: '',
-        text: "Yes, there are complimentary coupons at the reception table while they last.\nIf you're planning to drink with us, a friendly-neighbourhood-private-hired-driver would love to drive you home.",
+        text: "Yes, there are complimentary coupons at the reception table while they last.\nIf you're planning to drink with us, a friendly-neighbourhood-private-hire-driver would love to get you home safely.",
       },
     ],
   },

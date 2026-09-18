@@ -89,10 +89,11 @@ const relationOptions = [
   'x-men',
   'fishball',
   'macaroni',
-  'bread',
+  'pain au chocolat',
+  'bankai',
   'placeholder'
 ]
-const inviteOptions = ['for myself', 'for my family', "no thanks, save Ethan's money"]
+const inviteOptions = ['For myself', 'For my family', "No thanks, save Ethan's money"]
 
 const name = ref('')
 const rsvp = ref('')
@@ -159,7 +160,6 @@ label {
 input[type='text'],
 select {
   width: 100%;
-  box-sizing: border-box;
   margin-bottom: $space-lg;
   // 16px font stops iOS Safari zooming the page on focus.
   padding: $space-md;
