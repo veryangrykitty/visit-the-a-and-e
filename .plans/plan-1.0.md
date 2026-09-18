@@ -28,18 +28,18 @@ Is there parking?
 Yes, and there are complimentary coupons at the reception table while they last. If you're planning to drink with us, do take a ride or the train instead.
 
 What should I wear?
-Ash: Surprise us. Just don't come naked.
+Ashlyn: Surprise us. Just don't come naked.
 Ethan:
 
 I have a dietary requirement.
 Let us know in the RSVP form and we'll follow up with you directly.
 
 What about gifts?
-Ash: Don't worry about it. Just come, eat well, and enjoy the day with us.
+Ashlyn: Don't worry about it. Just come, eat well, and enjoy the day with us.
 Ethan:
 
 When does it end?
-Ash: We'll set you free by 4:00 pm.
+Ashlyn: We'll set you free by 4:00 pm.
 
 What if I get bored?
 Ethan: It's 12.12 go buy yourself something on Shopee.

@@ -4,6 +4,7 @@
     <p>
       We'd love for you to be there when we say our vows. It'll be a short
       ceremony, a long lunch, and the people we like most in one room.
+      Just come, eat well, and enjoy the day with us.
     </p>
     <p>Come hungry. Stay a while.</p>
   </section>

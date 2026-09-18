@@ -17,7 +17,7 @@
       <fieldset>
         <legend>Whose guest are you?</legend>
         <div class="choice">
-          <label><input v-model="group" type="radio" value="bride" /> Ash's</label>
+          <label><input v-model="group" type="radio" value="bride" /> Ashlyn's</label>
           <label><input v-model="group" type="radio" value="groom" /> Ethan's</label>
         </div>
       </fieldset>
@@ -35,7 +35,7 @@
           v-model.trim="relationOf"
           type="text"
           aria-label="of whom"
-          placeholder="Ash, Ethan, something..."
+          placeholder="Ashlyn, Ethan, something..."
         />
       </div>
 

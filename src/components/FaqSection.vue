@@ -42,7 +42,7 @@ const faqs = [
   {
     q: 'What should I wear?',
     a: [
-      { who: 'Ash', text: "Surprise us. Just don't come naked." },
+      { who: 'Ashlyn', text: "Surprise us. Just don't come naked." },
       { who: 'Ethan', text: 'Delight us. Come naked.' },
     ],
   },
@@ -56,11 +56,21 @@ const faqs = [
     ],
   },
   {
+    q: 'Why did we invite you?',
+    a: [
+      {
+        who: 'Ashlyn',
+        text: "Your presence will be a gift to us.",
+      },
+      { who: 'Ethan', text: 'I like my friends close and my enemies closer.' },
+    ],
+  },
+  {
     q: 'What about gifts?',
     a: [
       {
-        who: 'Ash',
-        text: "Don't worry about it. Just come, eat well, and enjoy the day with us.",
+        who: 'Ashlyn',
+        text: "We don't need any gifts.",
       },
       { who: 'Ethan', text: 'Could use a lamborghini.' },
     ],
@@ -68,7 +78,7 @@ const faqs = [
   {
     q: 'When does it end?',
     a: [
-      { who: 'Ash', text: "We'll set you free by 3:30 pm." },
+      { who: 'Ashlyn', text: "We'll set you free by 3:30 pm." },
       { who: 'Ethan', text: "When I get my lamborghini." },
     ],
   },
