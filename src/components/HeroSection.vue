@@ -1,6 +1,5 @@
 <template>
   <header class="hero">
-    <!-- Swap this import for your own photo; layout is unchanged. -->
     <img class="hero__img" :src="heroImage" alt="" />
 
     <div class="hero__caption">
@@ -13,7 +12,7 @@
 </template>
 
 <script setup>
-import heroImage from '../assets/hero-placeholder.svg'
+import heroImage from '../assets/creation_of_a&e.jpg'
 </script>
 
 <style scoped lang="scss">
@@ -25,12 +24,14 @@ import heroImage from '../assets/hero-placeholder.svg'
 
 .hero__img {
   display: block;
-  width: 100%;
-  max-width: 100%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  max-width: 1200px;
   height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  border-radius: $radius;
 
   @media (min-width: $bp-sm) {
     aspect-ratio: 3 / 2;
