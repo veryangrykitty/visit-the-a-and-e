@@ -13,7 +13,7 @@
     </div>
 
     <p class="faq__footer faq__item">
-      More questions? Ask google yourself.
+      More questions? Ask google.
     </p>
   </section>
 </template>
