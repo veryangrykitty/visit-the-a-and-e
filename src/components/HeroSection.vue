@@ -23,13 +23,14 @@ import heroImage from '../assets/creation_of_a&e.jpg'
 @use 'tokens' as *;
 
 .hero {
-  text-align: center;
+  @include section;
+  padding: 0;
 }
 
 .hero__caption {
-  // The caption leads; the artwork follows it.
+  // Separates the caption from the artwork above it. No bottom margin -- the
+  // space below every section is the flex `gap` on .page__main.
   margin-top: $space-3xl;
-  margin-bottom: $space-3xl;
 }
 
 .hero__eyebrow {

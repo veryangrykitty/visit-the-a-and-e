@@ -28,11 +28,10 @@
 @use 'tokens' as *;
 
 .details {
-  text-align: center;
+  @include section;
   // Hairlines rather than a filled card: the venue is something you read, and
   // the RSVP panel below is the only block on the page that should look
-  // interactive.
-  padding: $space-3xl 0;
+  // interactive. The inset from the rules is the mixin's padding.
   border-top: $border-width solid $color-rule;
   border-bottom: $border-width solid $color-rule;
 }

@@ -41,7 +41,7 @@ const schedule = [
 @use 'tokens' as *;
 
 .timeline {
-  text-align: center;
+  @include section;
 }
 
 .timeline__heading {

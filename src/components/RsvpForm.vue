@@ -202,11 +202,18 @@ async function submit() {
 // that gets a filled panel. Full-bleed to the runway's gutter on phones, where
 // a 16px inset inside a 16px gutter would just look like a mistake.
 .rsvp {
+  // A column of labelled fields, so only the eyebrow and heading are centred.
+  @include section(left);
+  // The only section with a background, so the rhythm has to sit outside it:
+  // margin separates the panel from its neighbours, and the padding below is
+  // the panel's own inside edge, overriding the mixin's.
+  margin-block: $section-padding;
   margin-inline: -#{$page-padding};
   padding: $space-4xl $page-padding;
   background: $color-panel;
 
   @include desktop {
+    margin-block: $section-padding-wide;
     margin-inline: 0;
     padding: $space-4xl;
     border-radius: $radius-lg;
@@ -220,7 +227,7 @@ async function submit() {
 }
 
 .rsvp__heading {
-  margin: 0 0 $space-4xl;
+  margin: 0 0 $space-xl;
   font-size: $font-size-lg;
   font-weight: $font-weight-bold;
   line-height: 1.1;

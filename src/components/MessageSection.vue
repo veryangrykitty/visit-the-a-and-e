@@ -14,7 +14,7 @@
 @use 'tokens' as *;
 
 .message {
-  text-align: center;
+  @include section;
   // ~46 characters a line. Centred text gets hard to track back from much past
   // this, and the runway is wider than the prose wants to be.
   max-width: 34ch;

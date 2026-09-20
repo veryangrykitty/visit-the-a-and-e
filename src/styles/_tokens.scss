@@ -103,6 +103,11 @@ $page-padding-wide: $space-xxl;
 $section-gap:       48px;
 $section-gap-wide:  72px;
 
+// What @mixin section puts above and below every section. Two neighbours each
+// contribute one, so the seam between any two sections is twice this.
+$section-padding:      24px;
+$section-padding-wide: 36px;
+
 // ---- Elevation -------------------------------------------------------------
 // Wide and soft so the runway reads as lifted off the backdrop, not outlined.
 $shadow-runway: 0 0 40px rgba($color-text, 0.16);
@@ -119,6 +124,19 @@ $bp-sm: 640px;
 @mixin desktop {
   @media (min-width: $bp-sm) {
     @content;
+  }
+}
+
+// Every section root includes this, and it owns the vertical rhythm: change
+// $section-padding and every section on the page moves together. Most sections
+// are centred; the two that hold a column of text -- the form and the FAQ --
+// pass `left`.
+@mixin section($align: center) {
+  text-align: $align;
+  padding-block: $section-padding;
+
+  @include desktop {
+    padding-block: $section-padding-wide;
   }
 }
 

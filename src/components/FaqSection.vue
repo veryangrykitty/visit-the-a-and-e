@@ -74,7 +74,7 @@ const faqs = [
   {
     q: 'What if I get bored?',
     a: [
-      { who: 'Ethan', text: "It's 12.12 — go buy yourself something on Shopee." },
+      { who: 'Ethan', text: "It's 12.12 go buy yourself something on Shopee." },
     ],
   },
 ]
@@ -82,6 +82,11 @@ const faqs = [
 
 <style scoped lang="scss">
 @use 'tokens' as *;
+
+.faq {
+  // A left-aligned list; the heading centres itself below.
+  @include section(left);
+}
 
 .faq__heading {
   margin: 0 0 $space-xl;

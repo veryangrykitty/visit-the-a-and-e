@@ -54,11 +54,7 @@ import FaqSection from './components/FaqSection.vue'
 .page__main {
   display: flex;
   flex-direction: column;
-  gap: $section-gap;
-
-  @include desktop {
-    gap: $section-gap-wide;
-  }
+  // No gap: each section carries its own spacing through @mixin section.
 }
 
 .page__footer {
