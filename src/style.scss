@@ -15,15 +15,20 @@
 
 body {
   margin: 0;
-  min-height: 100vh;
+  // dvh, not vh: on mobile Safari `100vh` is the tallest the viewport ever gets,
+  // so the page starts out taller than the screen and the footer sits below the
+  // fold for no reason.
+  min-height: 100dvh;
   padding: 0;
   // Backdrop the runway floats over. When the artwork arrives, add it here as
   // `background: url(...) center / cover fixed $color-backdrop;` -- `fixed`
-  // keeps it still while the runway scrolls.
+  // keeps it still while the runway scrolls, and the colour stays as the
+  // fallback underneath it.
   background: $color-backdrop;
   color: $color-text;
   font: #{$font-weight-base} #{$font-size-base}/#{$line-height} $font-family;
   -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
 }
 
 img {
@@ -37,4 +42,43 @@ select,
 textarea,
 button {
   font-family: inherit;
+}
+
+// One ring for everything focusable, drawn outside the element so it never
+// shifts layout. `:focus-visible` keeps it off mouse clicks but on for keyboards.
+:focus-visible {
+  outline: $focus-width solid $color-focus;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: $color-primary;
+  color: $color-on-primary;
+}
+
+// Reachable by screen reader, invisible on screen. `display: none` would hide it
+// from both. Global rather than scoped because more than one section needs a
+// heading it doesn't want to show.
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

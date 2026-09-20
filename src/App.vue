@@ -1,13 +1,18 @@
 <template>
   <div class="page">
-    <HeroSection />
-    <MessageSection />
-    <DetailsSection />
-    <TimelineSection />
-    <RsvpForm />
-    <FaqSection />
+    <main class="page__main">
+      <HeroSection />
+      <MessageSection />
+      <DetailsSection />
+      <TimelineSection />
+      <RsvpForm />
+      <FaqSection />
+    </main>
 
-    <footer class="page__footer">Ashlyn &amp; Ethan · 12.12.2026</footer>
+    <footer class="page__footer">
+      <p class="page__monogram" aria-hidden="true">A <span>&amp;</span> E</p>
+      <p class="page__footer-line">Ashlyn &amp; Ethan · 12 December 2026</p>
+    </footer>
   </div>
 </template>
 
@@ -32,7 +37,7 @@ import FaqSection from './components/FaqSection.vue'
   max-width: $content-max-width;
   // Always reaches the bottom of the viewport, so a short page still reads as
   // a full-length runway rather than a floating card.
-  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0 auto;
   background: $color-runway;
   box-shadow: $shadow-runway;
@@ -40,10 +45,18 @@ import FaqSection from './components/FaqSection.vue'
   padding: $space-xxl $page-padding;
   display: flex;
   flex-direction: column;
-  gap: $section-gap;
 
   @media (min-width: $bp-sm) {
     padding: $section-gap $page-padding-wide;
+  }
+}
+
+.page__main {
+  display: flex;
+  flex-direction: column;
+  gap: $section-gap;
+
+  @media (min-width: $bp-sm) {
     gap: $section-gap-wide;
   }
 }
@@ -51,10 +64,27 @@ import FaqSection from './components/FaqSection.vue'
 .page__footer {
   // Pinned to the foot of the runway when the content doesn't fill it.
   margin-top: auto;
-  padding-top: $space-xl;
-  border-top: $border-width solid $color-border;
-  font-size: $font-size-sm;
+  padding-top: $section-gap;
   text-align: center;
-  color: $color-focus;
+}
+
+// The names reduced to their initials -- a close on the page that echoes the
+// hero's ampersand without repeating the whole title a third time.
+.page__monogram {
+  margin: 0 0 $space-sm;
+  font-size: $font-size-lg;
+  line-height: 1;
+  color: $color-text;
+
+  span {
+    color: $color-ink-blue;
+  }
+}
+
+.page__footer-line {
+  margin: 0;
+  font-size: $font-size-sm;
+  letter-spacing: 0.08em;
+  color: $color-muted;
 }
 </style>
