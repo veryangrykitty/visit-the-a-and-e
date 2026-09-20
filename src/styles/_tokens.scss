@@ -11,10 +11,10 @@ $color-accent:    #ffd9a8; // TODO placeholder -- swap when decided
 // ---- Neutrals --------------------------------------------------------------
 // Placeholder for the static background art; deep enough that the runway's
 // shadow reads against it. Swap for the image when it lands.
-$color-backdrop: #e6eaee;
+$color-backdrop: #ffffff;
 // Sampled from the timeline poster's paper so the artwork melts into the
 // column instead of sitting on it as a visible card.
-$color-runway:   #f7f2e7;
+$color-runway:   #ffffff;
 $color-surface:  #fff;    // inputs
 $color-text:     #1f2933;
 $color-border:   #d7dde2;
@@ -51,7 +51,8 @@ $font-size-md:     18px;
 $font-size-lg:     24px;
 $font-size-xl:     32px;
 $font-size-xxl:    44px; // hero title, wide screens
-$font-weight-bold: 600;
+$font-weight-base: 500; // Medium -- the lightest face loaded
+$font-weight-bold: 700;
 $line-height:      1.5;
 
 // ---- Borders & shape -------------------------------------------------------

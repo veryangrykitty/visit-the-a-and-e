@@ -5,8 +5,8 @@
 
 @font-face {
   font-family: 'Cormorant Garamond';
-  src: url('@/assets/fonts/CormorantGaramond-Regular.woff2') format('woff2');
-  font-weight: 400;
+  src: url('@/assets/fonts/CormorantGaramond-Medium.woff2') format('woff2');
+  font-weight: 500;
   font-style: normal;
   // Show fallback text immediately, swap when the file lands, so the page is
   // never blank on a slow phone connection.
@@ -15,8 +15,8 @@
 
 @font-face {
   font-family: 'Cormorant Garamond';
-  src: url('@/assets/fonts/CormorantGaramond-SemiBold.woff2') format('woff2');
-  font-weight: 600;
+  src: url('@/assets/fonts/CormorantGaramond-Bold.woff2') format('woff2');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }

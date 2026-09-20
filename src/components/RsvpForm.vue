@@ -229,7 +229,7 @@ legend {
     min-height: 44px;
     margin: 0;
     font-size: $font-size-base;
-    font-weight: 400;
+    font-weight: $font-weight-base;
   }
 
   @media (min-width: $bp-sm) {

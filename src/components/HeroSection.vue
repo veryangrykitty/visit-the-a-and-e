@@ -56,7 +56,7 @@ import heroImage from '../assets/creation_of_a&e.jpg'
   line-height: 1.15;
 
   span {
-    font-weight: 400;
+    font-weight: $font-weight-base;
     color: $color-focus;
   }
 

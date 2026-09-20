@@ -22,7 +22,7 @@ body {
   // keeps it still while the runway scrolls.
   background: $color-backdrop;
   color: $color-text;
-  font: #{$font-size-base}/#{$line-height} $font-family;
+  font: #{$font-weight-base} #{$font-size-base}/#{$line-height} $font-family;
   -webkit-text-size-adjust: 100%;
 }
 

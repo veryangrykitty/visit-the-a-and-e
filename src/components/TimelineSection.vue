@@ -1,36 +1,42 @@
 <template>
   <section class="timeline">
-    <!-- The poster carries its own title, so the heading is for the document
-         outline and screen readers only. -->
     <h2 class="timeline__heading">Timeline</h2>
 
-    <img
-      class="timeline__img"
-      :src="timelineImage"
-      width="1024"
-      height="1536"
-      :alt="alt"
-    />
+    <div class="timeline__frame">
+      <img
+        class="timeline__img"
+        :src="timelineImage"
+        width="864"
+        height="1244"
+        alt=""
+      />
+
+      <ol class="timeline__list">
+        <li v-for="item in schedule" :key="item.time" class="timeline__item">
+          <span class="timeline__time">{{ item.time }}</span>
+          <span class="timeline__what">{{ item.what }}</span>
+        </li>
+      </ol>
+    </div>
   </section>
 </template>
 
 <script setup>
 import timelineImage from '../assets/timeline.png'
 
-// The poster's schedule is baked into the artwork, so the alt text has to
-// carry it in full -- keep this in step with the image if it's ever redrawn.
-const alt =
-  'Illustrated schedule for Saturday 12 December 2026 at Conrad Singapore ' +
-  'Marina Bay. 10:30 am, tea ceremony. 11:00 am, solemnisation. 11:30 am, ' +
-  'canapés and mocktails at the Pavilion Foyer. 12:00 pm, doors open.'
+const schedule = [
+  { time: '10:30 am', what: 'Tea ceremony' },
+  { time: '11:00 am', what: 'Solemnisation' },
+  { time: '11:30 am', what: 'Canapés and mocktails at the Pavilion Foyer' },
+  { time: '12:20 pm', what: 'Lunch is served' },
+]
 </script>
 
 <style scoped lang="scss">
 @use 'tokens' as *;
 
 .timeline__heading {
-  // Off-screen rather than `display: none`, which would hide it from screen
-  // readers too.
+  // Visually hidden but still read by screen readers (display: none would hide it from them too).
   position: absolute;
   width: 1px;
   height: 1px;
@@ -41,12 +47,53 @@ const alt =
   white-space: nowrap;
 }
 
+.timeline__frame {
+  position: relative;
+  // Fills the runway on phones, capped at 70% of its widest content width so desktop keeps 70%.
+  width: 100%;
+  max-width: ($content-max-width - 2 * $page-padding-wide) * 0.7;
+  margin: 0 auto;
+}
+
 .timeline__img {
   display: block;
   width: 100%;
-  // No fixed aspect-ratio or object-fit: the poster is type, and any crop or
-  // squash would eat the times. The width/height attrs reserve the space.
+  // Natural aspect ratio (no crop): the list's percentages depend on it.
   height: auto;
-  border-radius: $radius;
+}
+
+.timeline__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  // Four equal rows (~19.2% pitch) centred on the icons, which sit at 14.1% to 71.8% of the poster's height.
+  position: absolute;
+  top: 3%;
+  left: 0;
+  right: 0;
+  height: 76.9%;
+  display: grid;
+  grid-auto-rows: 1fr;
+}
+
+.timeline__item {
+  align-self: center;
+  // The icons end ~47% across; start the text just clear of them.
+  margin-left: 56%;
+  width: 44%;
+  line-height: 1.3;
+}
+
+.timeline__time {
+  display: block;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline__what {
+  display: block;
+  font-size: $font-size-sm;
+  text-wrap: balance;
 }
 </style>
