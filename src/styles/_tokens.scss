@@ -9,10 +9,19 @@ $color-secondary: #c9c2f0; // TODO placeholder -- swap when decided
 $color-accent:    #ffd9a8; // TODO placeholder -- swap when decided
 
 // ---- Neutrals --------------------------------------------------------------
-$color-bg:      #f7fafc; // page ground
-$color-surface: #fff;    // inputs
-$color-text:    #1f2933;
-$color-border:  #d7dde2;
+// Placeholder for the static background art; deep enough that the runway's
+// shadow reads against it. Swap for the image when it lands.
+$color-backdrop: #e6eaee;
+// Sampled from the timeline poster's paper so the artwork melts into the
+// column instead of sitting on it as a visible card.
+$color-runway:   #f7f2e7;
+$color-surface:  #fff;    // inputs
+$color-text:     #1f2933;
+$color-border:   #d7dde2;
+
+// ---- Elevation -------------------------------------------------------------
+// Wide and soft so the runway reads as lifted off the backdrop, not outlined.
+$shadow-runway: 0 0 40px rgba($color-text, 0.16);
 
 // ---- Semantic --------------------------------------------------------------
 // Primary is pale, so anything sitting on it needs dark ink, not white.
@@ -33,7 +42,9 @@ $space-xl:  20px;
 $space-xxl: 24px;
 
 // ---- Typography ------------------------------------------------------------
-$font-family:      system-ui, -apple-system, 'Segoe UI', sans-serif;
+// Self-hosted, declared in _fonts.scss. Georgia leads the fallbacks so the
+// pre-swap render is already a serif and the reflow stays small.
+$font-family:      'Cormorant Garamond', Georgia, 'Times New Roman', serif;
 $font-size-sm:     14px;
 $font-size-base:   16px;
 $font-size-md:     18px;

@@ -20,6 +20,14 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [vue()],
     base: BASE,
+    resolve: {
+      // Sass leaves url() untouched and Vite rebases it against the entry
+      // stylesheet, not the partial it was written in -- so font urls in
+      // styles/_fonts.scss go through this alias instead of `../assets/`.
+      alias: {
+        '@': fileURLToPath(new URL('src', import.meta.url)),
+      },
+    },
     envPrefix: ['VITE_', 'GAS_'],
     css: {
       preprocessorOptions: {

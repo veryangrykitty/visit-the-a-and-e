@@ -1,3 +1,4 @@
+@use 'fonts';
 @use 'tokens' as *;
 
 *,
@@ -16,7 +17,10 @@ body {
   margin: 0;
   min-height: 100vh;
   padding: 0;
-  background: $color-bg;
+  // Backdrop the runway floats over. When the artwork arrives, add it here as
+  // `background: url(...) center / cover fixed $color-backdrop;` -- `fixed`
+  // keeps it still while the runway scrolls.
+  background: $color-backdrop;
   color: $color-text;
   font: #{$font-size-base}/#{$line-height} $font-family;
   -webkit-text-size-adjust: 100%;
@@ -24,4 +28,13 @@ body {
 
 img {
   max-width: 100%;
+}
+
+// Form controls don't inherit the page font in any browser, so the RSVP inputs
+// would fall back to the system UI face without this.
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
 }
