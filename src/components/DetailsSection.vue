@@ -70,7 +70,7 @@
   padding: 0 $space-xl;
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.84px;
   text-transform: uppercase;
   text-decoration: none;
   color: $color-ink-blue;

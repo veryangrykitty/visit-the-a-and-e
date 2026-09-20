@@ -46,7 +46,7 @@ import FaqSection from './components/FaqSection.vue'
   display: flex;
   flex-direction: column;
 
-  @media (min-width: $bp-sm) {
+  @include desktop {
     padding: $section-gap $page-padding-wide;
   }
 }
@@ -56,7 +56,7 @@ import FaqSection from './components/FaqSection.vue'
   flex-direction: column;
   gap: $section-gap;
 
-  @media (min-width: $bp-sm) {
+  @include desktop {
     gap: $section-gap-wide;
   }
 }
@@ -84,7 +84,7 @@ import FaqSection from './components/FaqSection.vue'
 .page__footer-line {
   margin: 0;
   font-size: $font-size-sm;
-  letter-spacing: 0.08em;
+  letter-spacing: 1.12px;
   color: $color-muted;
 }
 </style>

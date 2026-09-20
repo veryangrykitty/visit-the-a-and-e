@@ -206,7 +206,7 @@ async function submit() {
   padding: $space-4xl $page-padding;
   background: $color-panel;
 
-  @media (min-width: $bp-sm) {
+  @include desktop {
     margin-inline: 0;
     padding: $space-4xl;
     border-radius: $radius-lg;
@@ -253,7 +253,7 @@ async function submit() {
   padding: 0 0 $space-xs;
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.56px;
   color: $color-muted;
   border-bottom: $border-width solid $color-rule;
 
@@ -284,7 +284,7 @@ async function submit() {
 .field__req {
   font-size: $font-size-xs;
   font-weight: $font-weight-base;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.48px;
   color: $color-muted;
 
   &::before {
@@ -348,7 +348,7 @@ select {
   gap: $space-xs;
   align-items: center;
 
-  @media (min-width: $bp-sm) {
+  @include desktop {
     grid-template-columns: 1fr auto 1fr;
     gap: $space-sm;
   }
@@ -359,7 +359,7 @@ select {
   font-style: italic;
   color: $color-muted;
 
-  @media (min-width: $bp-sm) {
+  @include desktop {
     text-align: center;
   }
 }
@@ -369,7 +369,7 @@ select {
   display: grid;
   gap: $space-sm;
 
-  @media (min-width: $bp-sm) {
+  @include desktop {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -436,7 +436,7 @@ button {
   font: inherit;
   font-size: $font-size-md;
   font-weight: $font-weight-bold;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.72px;
   color: $color-on-primary;
   background: $color-primary;
   border: $border-width solid $color-ink-blue;

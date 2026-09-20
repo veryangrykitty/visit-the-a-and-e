@@ -19,6 +19,7 @@
         <li v-for="item in schedule" :key="item.time" class="timeline__item">
           <span class="timeline__time">{{ item.time }}</span>
           <span class="timeline__what">{{ item.what }}</span>
+          <span class="timeline__loc">{{ item.loc }}</span>
         </li>
       </ol>
     </div>
@@ -26,13 +27,13 @@
 </template>
 
 <script setup>
-import timelineImage from '../assets/timeline.png'
+import timelineImage from '../assets/timeline.jpg'
 
 const schedule = [
-  { time: '10:30 am', what: 'Tea ceremony' },
-  { time: '11:00 am', what: 'Solemnisation' },
-  { time: '11:30 am', what: 'Canapés and mocktails at the Pavilion Foyer' },
-  { time: '12:20 pm', what: 'Lunch is served' },
+  { time: '10:30 am', what: 'Tea ceremony', loc: 'Lvl 2 Salon room' },
+  { time: '11:00 am', what: 'Solemnisation', loc: 'Lvl 2 Salon room' },
+  { time: '11:30 am', what: 'Canapés and mocktails', loc: 'Lvl 4 Pavilion Foyer' },
+  { time: '12:00 pm', what: 'Doors open', loc: 'Lvl 4 Pavilion Foyer' }
 ]
 </script>
 
@@ -92,12 +93,9 @@ const schedule = [
   line-height: 1.3;
 }
 
-// Sized in cqw -- percentages of the poster's own width -- so the text shrinks
-// with the artwork it sits on. Fixed px here would overflow its row as soon as
-// the frame narrowed or the font fell back to Georgia, which is wider.
 .timeline__time {
   display: block;
-  font-size: clamp(11px, 4.2cqw, #{$font-size-base});
+  font-size: $font-size-base;
   font-weight: $font-weight-bold;
   // Lining so the times read as times; tabular so the four rows line up.
   font-variant-numeric: lining-nums tabular-nums;
@@ -105,7 +103,19 @@ const schedule = [
 
 .timeline__what {
   display: block;
-  font-size: clamp(10px, 3.6cqw, #{$font-size-sm});
+  font-size: $font-size-base;
+  color: $color-text;
+  text-wrap: balance;
+}
+
+// Third line, under what it belongs to. Smaller, italic and muted against the
+// full-strength event line above it, so the row reads as a hierarchy rather
+// than a list. $color-muted is the floor here -- this sits over artwork, so
+// anything lighter loses the contrast the poster background already eats into.
+.timeline__loc {
+  display: block;
+  font-size: $font-size-sm;
+  font-style: italic;
   color: $color-muted;
   text-wrap: balance;
 }

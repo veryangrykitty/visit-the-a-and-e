@@ -66,17 +66,17 @@ $space-4xl: 40px;
 // pre-swap render is already a serif and the reflow stays small.
 $font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
 
-// Fixed at the small end: these label controls, and 16px on an input is what
-// stops iOS Safari zooming the page on focus. Never make these fluid.
+// One fixed px per step. No em, rem or clamp anywhere in the scale, so every
+// size renders the same at every viewport. 16px on an input is also what stops
+// iOS Safari zooming the page on focus.
 $font-size-xs:   12px;
 $font-size-sm:   14px;
 $font-size-base: 16px;
-
-// Fluid from here up -- they scale with the viewport instead of stepping at a
-// breakpoint, so the type keeps its proportions at every width in between.
-$font-size-md:      clamp(17px, 1rem + 0.3vw, 19px);
-$font-size-lg:      clamp(22px, 1.1rem + 1.1vw, 28px);  // section headings
-$font-size-display: clamp(40px, 6.4vw + 1rem, 68px);    // the two names
+$font-size-md:   18px;
+$font-size-lg:   26px;  // section headings
+// Sized so "Ashlyn & Ethan" still sets on one line on a 360px phone, since it
+// no longer shrinks with the viewport. Raising this past ~48px will wrap it.
+$font-size-display: 44px;  // the two names
 
 $font-weight-base: 500; // Medium -- the lightest face loaded
 $font-weight-bold: 700;
@@ -84,9 +84,10 @@ $line-height:      1.5;
 $line-height-tight: 1.15;
 
 // Cormorant is a display serif: it wants air between letters when set small and
-// upper, and none at all when set large.
-$tracking-eyebrow: 0.18em;
-$tracking-display: -0.01em;
+// upper, and none at all when set large. In px, so each is tied to the size it
+// gets used at -- change that size and these need recomputing.
+$tracking-eyebrow: 2.16px;   // every eyebrow is $font-size-xs: 0.18 x 12
+$tracking-display: -0.44px;  // .hero__title is $font-size-display: -0.01 x 44
 
 // ---- Borders & shape -------------------------------------------------------
 $border-width: 1px;
@@ -112,6 +113,15 @@ $shadow-inset:  inset 0 1px 2px rgba($color-text, 0.05);
 $bp-sm: 640px;
 
 // ---- Mixins ----------------------------------------------------------------
+// The layout is written phone-first, so the bare rule is always the phone one
+// and this only ever adds what changes on a wider screen. $bp-sm is 640px --
+// large phones landscape and up, so "desktop" here means tablet too.
+@mixin desktop {
+  @media (min-width: $bp-sm) {
+    @content;
+  }
+}
+
 // The small tracked-uppercase label that titles a section. Used by the hero's
 // "We're getting married" and by the "Where" / "When" headings, so the three
 // read as one voice.

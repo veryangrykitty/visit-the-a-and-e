@@ -13,7 +13,7 @@
     </div>
 
     <p class="faq__footer faq__item">
-      More questions? Ask google.
+      More questions? Ask google yourself.
     </p>
   </section>
 </template>
@@ -132,7 +132,7 @@ const faqs = [
 .faq__who {
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.56px;
   color: $color-ink-blue;
   // Holds the two names to the same column width so their answers line up.
   // Wide enough for "Ashlyn", the longer of them.
