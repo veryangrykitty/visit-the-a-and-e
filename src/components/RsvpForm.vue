@@ -22,11 +22,11 @@
           </span>
           <div class="choice" role="radiogroup" aria-labelledby="attending-label">
             <label class="option">
-              <input v-model="rsvp" type="radio" value="true" required />
+              <input v-model="rsvp" name="rsvp" type="radio" value="true" required />
               <span>Yes, count me in</span>
             </label>
             <label class="option">
-              <input v-model="rsvp" type="radio" value="false" />
+              <input v-model="rsvp" name="rsvp" type="radio" value="false" />
               <span>Sorry, can't make it</span>
             </label>
           </div>
@@ -40,11 +40,11 @@
           <span class="field__label" id="group-label">Whose guest are you?</span>
           <div class="choice" role="radiogroup" aria-labelledby="group-label">
             <label class="option">
-              <input v-model="group" type="radio" value="bride" />
+              <input v-model="group" name="group" type="radio" value="bride" />
               <span>Ashlyn's</span>
             </label>
             <label class="option">
-              <input v-model="group" type="radio" value="groom" />
+              <input v-model="group" name="group" type="radio" value="groom" />
               <span>Ethan's</span>
             </label>
           </div>

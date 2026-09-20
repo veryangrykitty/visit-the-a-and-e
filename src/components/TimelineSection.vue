@@ -1,6 +1,6 @@
 <template>
   <section class="timeline" aria-labelledby="timeline-heading">
-    <h2 id="timeline-heading" class="timeline__heading">When</h2>
+    <h2 id="timeline-heading" class="timeline__heading">Timeline</h2>
 
     <div class="timeline__frame">
       <!-- Decorative: every time and label in the poster is already in the list

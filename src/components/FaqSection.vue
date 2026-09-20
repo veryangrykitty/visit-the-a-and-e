@@ -25,7 +25,7 @@ const faqs = [
     a: [
       {
         who: '',
-        text: 'Come by at 11:30am for canapés and mocktails at the Pavilion Foyer. Doors open at 12:00pm.',
+        text: 'Come by at 11:30am for canapés and mocktails at the Pavilion Foyer. Doors open at 12:00pm.\nIf you wish to attend the tea ceremony, please arrive at 10:30am at the Salon room on Level 2.',
       },
     ],
   },

@@ -1,6 +1,6 @@
 <template>
   <section class="details" aria-labelledby="details-heading">
-    <h2 id="details-heading" class="details__heading">Where</h2>
+    <h2 id="details-heading" class="details__heading">Location</h2>
 
     <p class="details__venue">Conrad Singapore Marina Bay</p>
 
