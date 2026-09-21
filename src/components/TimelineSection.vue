@@ -33,7 +33,8 @@ const schedule = [
   { time: '10:30 am', what: 'Tea ceremony', loc: 'Lvl 2 Salon room' },
   { time: '11:00 am', what: 'Solemnisation', loc: 'Lvl 2 Salon room' },
   { time: '11:30 am', what: 'Canapés and mocktails', loc: 'Lvl 4 Pavilion Foyer' },
-  { time: '12:00 pm', what: 'Doors open', loc: 'Lvl 4 Pavilion Foyer' }
+  { time: '12:00 pm', what: 'Doors open', loc: 'Lvl 4 Pavilion Foyer' },
+  { time: '12:30 pm', what: 'Lunch is served' },
 ]
 </script>
 

@@ -107,7 +107,7 @@
     <!-- The form is replaced outright on success, so focus is moved here or it
          would fall back to <body> with nothing announced. -->
     <p v-else ref="successEl" class="msg msg--ok" role="status" tabindex="-1">
-      Thank you, {{ name }} — we've got your RSVP. See you on the day.
+      {{ confirmation }}
     </p>
   </section>
 </template>
@@ -148,7 +148,7 @@ const inviteOptions = ['For myself', 'For my family', "No thanks, save Ethan's m
 
 const name = ref('')
 const rsvp = ref('')
-const group = ref('groom')
+const group = ref('')
 const relationType = ref('')
 const relationOf = ref('')
 const dietary = ref('')
@@ -158,6 +158,14 @@ const sending = ref(false)
 const done = ref(false)
 const error = ref('')
 const successEl = ref(null)
+
+// Both answers are a successful submission -- only the wording differs, so this
+// stays one element and keeps the single focus target the screen reader needs.
+const confirmation = computed(() =>
+  rsvp.value === 'false'
+    ? `Thank you, ${name.value} — we've got your RSVP. Sorry you can't make it, we'll catch up another time!`
+    : `Thank you, ${name.value} — we've got your RSVP. See you on the day.`
+)
 
 // The script has a single `relation` column, so the two controls are joined here.
 const relation = computed(() => {
@@ -172,7 +180,9 @@ async function submit() {
     const params = new URLSearchParams({
       name: name.value,
       rsvp: rsvp.value,
-      group: group.value,
+      // The radios start unchecked so the form doesn't answer for the guest,
+      // but the sheet wants a side either way -- fall back rather than send ''.
+      group: group.value || 'groom',
       relation: relation.value,
       dietary: dietary.value,
       'physical-invite': physicalInvite.value,
