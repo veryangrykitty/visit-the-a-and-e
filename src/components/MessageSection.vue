@@ -3,8 +3,13 @@
        just announces as an anonymous region to a screen reader. -->
   <div class="message">
     <p class="message__lead">
+      We the A&E, but there ain't no emergency.<br />
+      So E took his time — call it complacency.<br />
+      Now RSVP's late, gonna need some of that urgency.<br />
+      So here's the diagnosis, straight from triage.<br />
+      <br />
       We are getting married.<br />
-      And you are getting <strong>invited.</strong>
+      And you gonna get <strong><i>invited.</i></strong>
     </p>
 
     <div class="message__photo">
@@ -30,7 +35,7 @@ import photo from '../assets/photo2.webp'
 .message {
   // Not @mixin section: the photo runs to the runway's edges, so only the line
   // of text above it takes a gutter.
-  padding-top: $space-3xl;
+  padding-top: $space-4xl;
   text-align: center;
   background: $color-night;
   // A soft pale green, sampled off the mock, so the one bold word below --

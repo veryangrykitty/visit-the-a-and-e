@@ -239,7 +239,7 @@ $timeline-gap: $space-lg;
 .timeline__married {
   display: block;
   width: 32%;
-  max-width: 150px;
+  max-width: 200px;
   height: auto;
   margin: $space-xxl auto 0;
 }
