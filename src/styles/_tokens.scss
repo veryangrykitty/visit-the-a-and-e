@@ -1,52 +1,56 @@
 // Design tokens. Import into any SFC style block with:
 //   @use 'tokens' as *;
 
-@use 'sass:color';
-
-// ---- Brand -----------------------------------------------------------------
-// Every value below is sampled out of assets/timeline.png, so the page and the
-// poster are the same palette rather than two that nearly agree.
-// Primary is the pale highlight along the poster's ribbon: hsl(200, 77%, 88%).
-$color-primary:   #c8e8f8;
-// The ribbon's own mid-tone, and the foliage green. Sampled and named, but not
-// used by anything yet -- they're here for when a second accent is wanted.
-$color-ribbon:    #8db6e9;
-$color-secondary: #818c60; // sage, from the leaves
-$color-accent:    #e9c797; // cream gold, from the flower centres
+// ---- Palette ---------------------------------------------------------------
+// Every value below is sampled out of private_storage/mock.webp, so the page
+// and the mock are the same palette rather than two that nearly agree. The
+// page is three bands stacked down the runway -- night, sage, paper -- and the
+// sections below the mock (RSVP, FAQ, footer) reuse them in the same order.
+$color-night: #031818; // the band under the hero, the Maps button, the footer
+$color-sage:  #c1ccc1; // the Location band
+$color-paper: #f1f5e8; // the Timeline band, and the default for everything else
+// The script lettering baked into hero.webp and photo2.webp. Only ever used on
+// night -- on paper or sage it has no contrast at all.
+$color-gold:  #fffba6;
+// Soft pale green for regular text on night -- the message under the hero. The
+// bold word beside it is pure white, so this has to stay a shade under it.
+$color-mist:  #d4e6c8;
+// The "LOCATION" / "TIMELINE" labels and the times. 5.1:1 on sage, 8:1 on
+// paper, so it passes as text on both bands.
+$color-olive: #465225;
 
 // ---- Surfaces --------------------------------------------------------------
-// Light pastel blue, pulled toward the poster's palest wash. The runway is
-// white, so the two differ by ~1.18:1 -- enough for the shadow to have an edge
-// to fall against without the column reading as a separate card.
-$color-backdrop: #e3eef7;
-$color-runway:   #ffffff;
-// One step back toward the backdrop. Marks the RSVP as the part of the page you
-// act on rather than read, without introducing a second hue.
-$color-panel:    #eef5fb;
-$color-surface:  #ffffff; // inputs -- white so they pop off the panel
+// Only visible past $bp-sm, either side of the runway. A lifted night, so the
+// dark band under the hero reads as part of the same evening rather than a
+// hard-edged card sitting on it.
+$color-backdrop: #10282a;
+$color-runway:   $color-paper;
+// The RSVP sits on sage, like Location: the two bands you act on (open a map,
+// send a reply) share a colour. The form itself sits in a night card on it,
+// and RsvpForm flips the card's text to mist, gold and sage.
+$color-panel:    $color-sage;
+// Inputs and option cards. Sage rather than white, which glared on night; a
+// checked card lifts to paper, so the brightest thing in the form is your answer.
+$color-surface:  $color-sage;
 
 // ---- Line ------------------------------------------------------------------
 // Two weights, because they answer to different rules. Control borders are UI
-// and owe 3:1 (this is 3.66 on white); decorative hairlines owe nothing, so they
-// stay delicate. Both carry a little blue so they sit with the surfaces.
-$color-border: #7c8792;
-$color-rule:   #d6e4f0;
+// and owe 3:1 (this is 5.5 on white, 3.3 on sage); decorative hairlines owe
+// nothing, and are translucent so one value sits on both paper and sage.
+$color-border: #5f6b58;
+$color-rule:   rgba($color-night, 0.14);
 
 // ---- Text ------------------------------------------------------------------
-$color-text:  #1f2933; // 14.76:1 on the runway
-// Secondary text -- leans very slightly blue so it sits with the paper.
-$color-muted: #5a6672;
-// The blue reading voice: eyebrow, the 'of' joiner, small accents. Derived so it
-// keeps tracking primary when the hex above changes. Resolves to #1573a2 --
-// 5.24:1 on the runway, 4.77:1 on the panel, so it passes as text on both.
-$color-ink-blue: color.adjust($color-primary, $lightness: -52%);
-// Focus ring. Lighter than the ink so it reads as a highlight; #1886bd, which is
-// 4.05:1 on the runway and 3.68:1 on the panel -- clear of the 3:1 UI floor.
-$color-focus:    color.adjust($color-primary, $lightness: -46%);
+$color-text:  $color-night; // 17:1 on paper, 11:1 on sage
+$color-muted: #3f4b41;      // 8.4:1 on paper, 5.5:1 on sage
+// The accent reading voice: eyebrows, the 'of' joiner, the names in the FAQ.
+$color-accent-ink: $color-olive;
+$color-focus:      $color-olive;
 
 // ---- Semantic --------------------------------------------------------------
-// Primary is pale, so anything sitting on it needs dark ink, not white.
-$color-on-primary: $color-text;
+// Primary is the dark button from the mock, so anything on it is paper.
+$color-primary:    $color-night;
+$color-on-primary: $color-paper;
 $color-success: #2f6b4f;
 $color-error:   #a33a30;
 
@@ -62,9 +66,12 @@ $space-3xl: 32px;
 $space-4xl: 40px;
 
 // ---- Typography ------------------------------------------------------------
-// Self-hosted, declared in _fonts.scss. Georgia leads the fallbacks so the
+// Loaded from Google Fonts in index.html. Georgia leads the fallbacks so the
 // pre-swap render is already a serif and the reflow stays small.
-$font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+$font-family: 'EB Garamond', Georgia, 'Times New Roman', serif;
+// The mock sets its tracked labels ("LOCATION", "TIMELINE") in a light sans;
+// @mixin eyebrow is the only thing that uses it.
+$font-family-sans: 'Open Sans', 'Segoe UI', system-ui, sans-serif;
 
 // One fixed px per step. No em, rem or clamp anywhere in the scale, so every
 // size renders the same at every viewport. 16px on an input is also what stops
@@ -73,46 +80,42 @@ $font-size-xs:   12px;
 $font-size-sm:   14px;
 $font-size-base: 16px;
 $font-size-md:   18px;
-$font-size-lg:   26px;  // section headings
-// Sized so "Ashlyn & Ethan" still sets on one line on a 360px phone, since it
-// no longer shrinks with the viewport. Raising this past ~48px will wrap it.
-$font-size-display: 44px;  // the two names
+$font-size-lg:   22px;  // section headings -- the venue, RSVP, Questions
 
-$font-weight-base: 500; // Medium -- the lightest face loaded
+$font-weight-base: 500; // Medium
 $font-weight-bold: 700;
 $line-height:      1.5;
-$line-height-tight: 1.15;
+$line-height-tight: 1.2;
 
-// Cormorant is a display serif: it wants air between letters when set small and
-// upper, and none at all when set large. In px, so each is tied to the size it
-// gets used at -- change that size and these need recomputing.
-$tracking-eyebrow: 2.16px;   // every eyebrow is $font-size-xs: 0.18 x 12
-$tracking-display: -0.44px;  // .hero__title is $font-size-display: -0.01 x 44
+// In px, so each is tied to the size it gets used at -- change that size and
+// these need recomputing.
+$tracking-eyebrow: 3px;     // every eyebrow is $font-size-xs: 0.25 x 12
+$tracking-heading: 0.66px;  // uppercase headings at $font-size-lg: 0.03 x 22
 
 // ---- Borders & shape -------------------------------------------------------
 $border-width: 1px;
-$radius:       6px;
-$radius-lg:    10px;
+$radius:       4px;
 $focus-width:  2px;
 
 // ---- Layout ----------------------------------------------------------------
 $form-max-width:    416px;
 $content-max-width: 640px;
-$page-padding:      $space-lg; // side gutter on phones
-$page-padding-wide: $space-xxl;
-$section-gap:       48px;
-$section-gap-wide:  72px;
+// The runway itself has no padding -- every band runs edge to edge -- so each
+// section carries this gutter through @mixin section instead.
+$page-padding:      $space-xl; // side gutter on phones
+$page-padding-wide: $space-4xl;
 
-// What @mixin section puts above and below every section. Two neighbours each
-// contribute one, so the seam between any two sections is twice this.
-$section-padding:      24px;
-$section-padding-wide: 36px;
+// What @mixin section puts above and below every section. Sections here each
+// own a band of colour, so unlike before this is the full inside edge of the
+// band, not half a seam shared with the neighbour.
+$section-padding:      48px;
+$section-padding-wide: 64px;
 
 // ---- Elevation -------------------------------------------------------------
-// Wide and soft so the runway reads as lifted off the backdrop, not outlined.
-$shadow-runway: 0 0 40px rgba($color-text, 0.16);
+// Wide and soft so the runway reads as lifted off the dark backdrop.
+$shadow-runway: 0 0 48px rgba(#000, 0.45);
 // Barely there -- just enough to seat an input on the panel.
-$shadow-inset:  inset 0 1px 2px rgba($color-text, 0.05);
+$shadow-inset:  inset 0 1px 2px rgba($color-text, 0.06);
 
 // ---- Breakpoints -----------------------------------------------------------
 $bp-sm: 640px;
@@ -127,29 +130,42 @@ $bp-sm: 640px;
   }
 }
 
-// Every section root includes this, and it owns the vertical rhythm: change
-// $section-padding and every section on the page moves together. Most sections
-// are centred; the two that hold a column of text -- the form and the FAQ --
-// pass `left`.
+// Every section root includes this, and it owns the rhythm and the gutter:
+// change $section-padding and every band on the page moves together. Most
+// sections are centred; the two that hold a column of text -- the form and
+// the FAQ -- pass `left`.
 @mixin section($align: center) {
   text-align: $align;
-  padding-block: $section-padding;
+  padding: $section-padding $page-padding;
 
   @include desktop {
-    padding-block: $section-padding-wide;
+    padding: $section-padding-wide $page-padding-wide;
   }
 }
 
-// The small tracked-uppercase label that titles a section. Used by the hero's
-// "We're getting married" and by the "Where" / "When" headings, so the three
-// read as one voice.
+// The small tracked-uppercase label that titles a section -- "LOCATION",
+// "TIMELINE", and the RSVP's eyebrow -- so the three read as one voice.
 @mixin eyebrow {
+  font-family: $font-family-sans;
   font-size: $font-size-xs;
-  font-weight: $font-weight-bold;
+  font-weight: 600;
+  line-height: 1.4;
   letter-spacing: $tracking-eyebrow;
   // Tracking adds space after the last letter too; the indent puts it back so
   // centred text actually looks centred.
   text-indent: $tracking-eyebrow;
   text-transform: uppercase;
-  color: $color-ink-blue;
+  color: $color-accent-ink;
+}
+
+// Bold serif capitals, after "CONRAD SINGAPORE MARINA BAY" in the mock. The
+// venue, the RSVP and the FAQ all title themselves with it.
+@mixin heading {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  letter-spacing: $tracking-heading;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: $color-text;
 }

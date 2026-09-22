@@ -27,6 +27,9 @@ body {
   background: $color-backdrop;
   color: $color-text;
   font: #{$font-weight-base} #{$font-size-base}/#{$line-height} $font-family;
+  // EB Garamond is variable and carries an optical size axis, so let the
+  // browser pick the right cut for the size each element is set at.
+  font-optical-sizing: auto;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
 }

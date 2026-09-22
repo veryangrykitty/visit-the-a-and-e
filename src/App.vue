@@ -10,7 +10,7 @@
     </main>
 
     <footer class="page__footer">
-      <p class="page__monogram" aria-hidden="true">A <span>&amp;</span> E</p>
+      <p class="page__monogram" aria-hidden="true">A&amp;E</p>
       <p class="page__footer-line">Ashlyn &amp; Ethan · 12 December 2026</p>
     </footer>
   </div>
@@ -29,9 +29,10 @@ import FaqSection from './components/FaqSection.vue'
 @use 'tokens' as *;
 
 // The runway: a centre column carrying every section, lifted off the backdrop.
-// Below $bp-sm it fills the viewport edge to edge (no backdrop is visible, so
-// the shadow costs nothing and the content keeps the full width); past that it
-// settles into a centred column with the backdrop showing around it.
+// Below $bp-sm it fills the viewport edge to edge; past that it settles into a
+// centred column with the backdrop showing around it. No padding of its own:
+// every section is a band of colour that runs to the edges, and carries its
+// own gutter through @mixin section.
 .page {
   width: 100%;
   max-width: $content-max-width;
@@ -41,46 +42,38 @@ import FaqSection from './components/FaqSection.vue'
   margin: 0 auto;
   background: $color-runway;
   box-shadow: $shadow-runway;
-  // Single side gutter for the whole page, widened once there's room.
-  padding: $space-xxl $page-padding;
   display: flex;
   flex-direction: column;
-
-  @include desktop {
-    padding: $section-gap $page-padding-wide;
-  }
 }
 
 .page__main {
   display: flex;
   flex-direction: column;
-  // No gap: each section carries its own spacing through @mixin section.
+  // No gap: the bands butt up against each other.
 }
 
+// Back to night at the foot, so the page closes on the colour it opened with.
 .page__footer {
   // Pinned to the foot of the runway when the content doesn't fill it.
   margin-top: auto;
-  padding-top: $section-gap;
+  padding: $space-4xl $page-padding;
   text-align: center;
+  background: $color-night;
+  color: $color-paper;
 }
 
-// The names reduced to their initials -- a close on the page that echoes the
-// hero's ampersand without repeating the whole title a third time.
+// The names reduced to their initials, in the gold of the hero's lettering.
 .page__monogram {
   margin: 0 0 $space-sm;
   font-size: $font-size-lg;
   line-height: 1;
-  color: $color-text;
-
-  span {
-    color: $color-ink-blue;
-  }
+  color: $color-gold;
 }
 
 .page__footer-line {
   margin: 0;
   font-size: $font-size-sm;
   letter-spacing: 1.12px;
-  color: $color-muted;
+  opacity: 0.8;
 }
 </style>

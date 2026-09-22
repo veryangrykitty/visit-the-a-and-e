@@ -5,13 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- EB Garamond and Open Sans, both variable, upright and italic. Asked for
+         in one request rather than two: the css2 API takes several `family`
+         params, and they have to stay in alphabetical order or it 400s. The
+         preconnects open the sockets to Google's CSS and font hosts before the
+         stylesheet below asks for them, which saves a round trip on mobile. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Ashlyn &amp; Ethan · 12.12.2026</title>
     <meta
       name="description"
       content="Ashlyn and Ethan are getting married on Saturday, 12 December 2026 at Conrad Singapore Marina Bay. A short ceremony, a long lunch, and the people we like most in one room."
     />
-    <!-- Tints the browser chrome on Android to match the page backdrop. -->
-    <meta name="theme-color" content="#e3eef7" />
+    <!-- Tints the browser chrome on Android to match the night band. -->
+    <meta name="theme-color" content="#031818" />
 
     <!-- This invite will mostly be opened from a WhatsApp message, so the link
          preview is the first thing most guests see. Absolute URLs are required:
@@ -26,9 +38,9 @@
     />
     <meta property="og:url" content="https://veryangrykitty.github.io/visit-the-a-and-e/" />
     <meta property="og:image" content="https://veryangrykitty.github.io/visit-the-a-and-e/og.jpg" />
-    <meta property="og:image:width" content="1359" />
-    <meta property="og:image:height" content="1314" />
-    <meta property="og:image:alt" content="Ashlyn and Ethan, painted in the style of Michelangelo's Creation of Adam." />
+    <meta property="og:image:width" content="1080" />
+    <meta property="og:image:height" content="1080" />
+    <meta property="og:image:alt" content="Ashlyn and Ethan walking across a lawn beside a mountain lake, with their names lettered above them." />
     <meta property="og:locale" content="en_SG" />
 
     <meta name="twitter:card" content="summary_large_image" />

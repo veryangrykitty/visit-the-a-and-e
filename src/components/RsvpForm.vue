@@ -3,112 +3,114 @@
     <p class="rsvp__eyebrow" aria-hidden="true">The important bit</p>
     <h2 id="rsvp-heading" class="rsvp__heading">RSVP</h2>
 
-    <form v-if="!done" class="rsvp__form" @submit.prevent="submit">
-      <!-- Three groups rather than nine stacked fields: the form reads as three
-           short questions, and each fieldset gives its controls a real name. -->
-      <fieldset class="group">
-        <legend class="group__legend">Who's coming</legend>
+    <div class="rsvp__card">
+      <form v-if="!done" class="rsvp__form" @submit.prevent="submit">
+        <!-- Three groups rather than nine stacked fields: the form reads as three
+             short questions, and each fieldset gives its controls a real name. -->
+        <fieldset class="group">
+          <legend class="group__legend">Who's coming</legend>
 
-        <div class="field">
-          <label class="field__label" for="name">
-            Your name <span class="field__req">required</span>
-          </label>
-          <input id="name" v-model.trim="name" type="text" autocomplete="name" required />
-        </div>
-
-        <div class="field">
-          <span class="field__label" id="attending-label">
-            Are you attending? <span class="field__req">required</span>
-          </span>
-          <div class="choice" role="radiogroup" aria-labelledby="attending-label">
-            <label class="option">
-              <input v-model="rsvp" name="rsvp" type="radio" value="true" required />
-              <span>Yes, count me in</span>
+          <div class="field">
+            <label class="field__label" for="name">
+              Your name <span class="field__req">required</span>
             </label>
-            <label class="option">
-              <input v-model="rsvp" name="rsvp" type="radio" value="false" />
-              <span>Sorry, can't make it</span>
-            </label>
+            <input id="name" v-model.trim="name" type="text" autocomplete="name" required />
           </div>
-        </div>
-      </fieldset>
 
-      <fieldset class="group">
-        <legend class="group__legend">How we know you</legend>
-
-        <div class="field">
-          <span class="field__label" id="group-label">Whose guest are you?</span>
-          <div class="choice" role="radiogroup" aria-labelledby="group-label">
-            <label class="option">
-              <input v-model="group" name="group" type="radio" value="bride" />
-              <span>Ashlyn's</span>
-            </label>
-            <label class="option">
-              <input v-model="group" name="group" type="radio" value="groom" />
-              <span>Ethan's</span>
-            </label>
+          <div class="field">
+            <span class="field__label" id="attending-label">
+              Are you attending? <span class="field__req">required</span>
+            </span>
+            <div class="choice" role="radiogroup" aria-labelledby="attending-label">
+              <label class="option">
+                <input v-model="rsvp" name="rsvp" type="radio" value="true" required />
+                <span>Yes, count me in</span>
+              </label>
+              <label class="option">
+                <input v-model="rsvp" name="rsvp" type="radio" value="false" />
+                <span>Sorry, can't make it</span>
+              </label>
+            </div>
           </div>
-        </div>
+        </fieldset>
 
-        <div class="field">
-          <label class="field__label" for="relation-type">You are a…</label>
-          <div class="relation">
-            <select id="relation-type" v-model="relationType">
-              <option value="" disabled>Select one</option>
-              <!-- 'friend' is from the plan; the rest are PLACEHOLDERS. -->
-              <option v-for="r in relationOptions" :key="r" :value="r">{{ r }}</option>
-            </select>
-            <span class="relation__of">of</span>
+        <fieldset class="group">
+          <legend class="group__legend">How we know you</legend>
+
+          <div class="field">
+            <span class="field__label" id="group-label">Whose guest are you?</span>
+            <div class="choice" role="radiogroup" aria-labelledby="group-label">
+              <label class="option">
+                <input v-model="group" name="group" type="radio" value="bride" />
+                <span>Ashlyn's</span>
+              </label>
+              <label class="option">
+                <input v-model="group" name="group" type="radio" value="groom" />
+                <span>Ethan's</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="relation-type">You are a…</label>
+            <div class="relation">
+              <select id="relation-type" v-model="relationType">
+                <option value="" disabled>Select one</option>
+                <!-- 'friend' is from the plan; the rest are PLACEHOLDERS. -->
+                <option v-for="r in relationOptions" :key="r" :value="r">{{ r }}</option>
+              </select>
+              <span class="relation__of">of</span>
+              <input
+                id="relation-of"
+                v-model.trim="relationOf"
+                type="text"
+                aria-label="of whom"
+                placeholder="Ashlyn, Ethan, something..."
+              />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="group">
+          <legend class="group__legend">Before the day</legend>
+
+          <div class="field">
+            <label class="field__label" for="dietary">Dietary requirements</label>
             <input
-              id="relation-of"
-              v-model.trim="relationOf"
+              id="dietary"
+              v-model.trim="dietary"
               type="text"
-              aria-label="of whom"
-              placeholder="Ashlyn, Ethan, something..."
+              placeholder="Allergies, halal, vegetarian, or none"
             />
           </div>
+
+          <div class="field">
+            <label class="field__label" for="physical-invite">Would you like a physical invite?</label>
+            <select id="physical-invite" v-model="physicalInvite">
+              <option value="" disabled>Select one</option>
+              <option v-for="o in inviteOptions" :key="o" :value="o">{{ o }}</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <div class="submit">
+          <button type="submit" :disabled="sending">
+            {{ sending ? 'Sending…' : 'Send RSVP' }}
+          </button>
+          <p class="submit__hint">We'll follow up directly about anything you've flagged.</p>
         </div>
-      </fieldset>
 
-      <fieldset class="group">
-        <legend class="group__legend">Before the day</legend>
+        <!-- role="alert" so it's announced the moment it appears; without it a
+             screen reader user gets no feedback that the submit failed. -->
+        <p v-if="error" class="msg msg--err" role="alert">{{ error }}</p>
+      </form>
 
-        <div class="field">
-          <label class="field__label" for="dietary">Dietary requirements</label>
-          <input
-            id="dietary"
-            v-model.trim="dietary"
-            type="text"
-            placeholder="Allergies, halal, vegetarian, or none"
-          />
-        </div>
-
-        <div class="field">
-          <label class="field__label" for="physical-invite">Would you like a physical invite?</label>
-          <select id="physical-invite" v-model="physicalInvite">
-            <option value="" disabled>Select one</option>
-            <option v-for="o in inviteOptions" :key="o" :value="o">{{ o }}</option>
-          </select>
-        </div>
-      </fieldset>
-
-      <div class="submit">
-        <button type="submit" :disabled="sending">
-          {{ sending ? 'Sending…' : 'Send RSVP' }}
-        </button>
-        <p class="submit__hint">We'll follow up directly about anything you've flagged.</p>
-      </div>
-
-      <!-- role="alert" so it's announced the moment it appears; without it a
-           screen reader user gets no feedback that the submit failed. -->
-      <p v-if="error" class="msg msg--err" role="alert">{{ error }}</p>
-    </form>
-
-    <!-- The form is replaced outright on success, so focus is moved here or it
-         would fall back to <body> with nothing announced. -->
-    <p v-else ref="successEl" class="msg msg--ok" role="status" tabindex="-1">
-      {{ confirmation }}
-    </p>
+      <!-- The form is replaced outright on success, so focus is moved here or it
+           would fall back to <body> with nothing announced. -->
+      <p v-else ref="successEl" class="msg msg--ok" role="status" tabindex="-1">
+        {{ confirmation }}
+      </p>
+    </div>
   </section>
 </template>
 
@@ -123,7 +125,6 @@ const relationOptions = [
   'relative',
   'colleague',
   'ex-colleague',
-  'neighbour',
   'family friend',
   'plus one',
   'baby',
@@ -208,26 +209,12 @@ async function submit() {
 <style scoped lang="scss">
 @use 'tokens' as *;
 
-// The one block on the page you act on rather than read, so it's the only one
-// that gets a filled panel. Full-bleed to the runway's gutter on phones, where
-// a 16px inset inside a 16px gutter would just look like a mistake.
+// On sage, like Location -- see $color-panel. The eyebrow and heading sit on
+// the band in their usual colours; the form itself goes in a night card below.
 .rsvp {
   // A column of labelled fields, so only the eyebrow and heading are centred.
   @include section(left);
-  // The only section with a background, so the rhythm has to sit outside it:
-  // margin separates the panel from its neighbours, and the padding below is
-  // the panel's own inside edge, overriding the mixin's.
-  margin-block: $section-padding;
-  margin-inline: -#{$page-padding};
-  padding: $space-4xl $page-padding;
   background: $color-panel;
-
-  @include desktop {
-    margin-block: $section-padding-wide;
-    margin-inline: 0;
-    padding: $space-4xl;
-    border-radius: $radius-lg;
-  }
 }
 
 .rsvp__eyebrow {
@@ -237,18 +224,36 @@ async function submit() {
 }
 
 .rsvp__heading {
-  margin: 0 0 $space-xl;
-  font-size: $font-size-lg;
-  font-weight: $font-weight-bold;
-  line-height: 1.1;
+  @include heading;
+  margin: 0 0 $space-3xl;
   text-align: center;
 }
 
-.rsvp__form {
+// Everything inside is flipped light for night: mist for text, as in the
+// message under the hero, gold for the accent voice, sage for muted. The
+// controls sit on sage, so inside them the usual dark-on-light holds.
+.rsvp__card {
+  // content-box, so $form-max-width is the measure the fields get and the
+  // padding goes outside it -- the relation row needs every px of that 416.
+  box-sizing: content-box;
   // The form wants a narrower measure than the runway; centring it keeps the
   // controls from stretching to a width no single answer needs.
   max-width: $form-max-width;
   margin-inline: auto;
+  padding: $space-xxl $space-xl;
+  color: $color-mist;
+  background: $color-night;
+  border-radius: $radius * 3;
+  // Tinted with night rather than black so it reads as the card's own shade on
+  // sage; a tight layer seats the edge, the wide one lifts it off the band.
+  box-shadow: 0 2px 6px rgba($color-night, 0.3), 0 24px 44px rgba($color-night, 0.8);
+
+  @include desktop {
+    // The runway is only $content-max-width, so on desktop the card can take
+    // the whole band: 560px, and 496 of it for the fields.
+    max-width: none;
+    padding: $space-4xl $space-3xl;
+  }
 }
 
 // ---- Groups ----------------------------------------------------------------
@@ -268,11 +273,11 @@ async function submit() {
   width: 100%;
   margin-bottom: $space-xl;
   padding: 0 0 $space-xs;
-  font-size: $font-size-sm;
-  font-weight: $font-weight-bold;
+  font-size: $font-size-base;
+  font-weight: $font-weight-base;
   letter-spacing: 0.56px;
-  color: $color-muted;
-  border-bottom: $border-width solid $color-rule;
+  color: $color-gold;
+  border-bottom: $border-width solid rgba($color-mist, 0.2);
 
   + * {
     clear: both;
@@ -291,8 +296,8 @@ async function submit() {
 .field__label {
   display: block;
   margin-bottom: $space-xs;
-  font-size: $font-size-sm;
-  font-weight: $font-weight-bold;
+  font-size: $font-size-base;
+  font-weight: $font-weight-base;
 }
 
 // Spelled out rather than marked with an asterisk, which screen readers either
@@ -302,7 +307,7 @@ async function submit() {
   font-size: $font-size-xs;
   font-weight: $font-weight-base;
   letter-spacing: 0.48px;
-  color: $color-muted;
+  color: $color-sage;
 
   &::before {
     content: '·  ';
@@ -329,7 +334,7 @@ select {
   }
 
   &:hover {
-    border-color: $color-ink-blue;
+    border-color: $color-accent-ink;
   }
 
   // The global ring sits 2px off the element, so on an already-bordered field
@@ -338,8 +343,8 @@ select {
   // on every tap. Draw focus flush to the border instead: one edge, not three.
   &:focus-visible {
     outline: none;
-    border-color: $color-ink-blue;
-    box-shadow: $shadow-inset, 0 0 0 $focus-width rgba($color-ink-blue, 0.28);
+    border-color: $color-accent-ink;
+    box-shadow: $shadow-inset, 0 0 0 $focus-width $color-gold;
   }
 }
 
@@ -374,7 +379,7 @@ select {
 .relation__of {
   font-size: $font-size-sm;
   font-style: italic;
-  color: $color-muted;
+  color: $color-sage;
 
   @include desktop {
     text-align: center;
@@ -399,6 +404,8 @@ select {
   min-height: 44px;
   padding: $space-sm $space-lg;
   font-size: $font-size-base;
+  // Set back to dark: the card is white, but .rsvp has made paper the default.
+  color: $color-text;
   background: $color-surface;
   border: $border-width solid $color-border;
   border-radius: $radius;
@@ -412,7 +419,7 @@ select {
     width: 18px;
     height: 18px;
     margin: 0;
-    accent-color: $color-ink-blue;
+    accent-color: $color-primary;
 
     // The card below carries the focus treatment; without this the global ring
     // also draws around the 18px dot, giving two rings for one control.
@@ -422,13 +429,13 @@ select {
   }
 
   &:hover {
-    border-color: $color-ink-blue;
+    border-color: $color-accent-ink;
   }
 
   // The whole card reads as selected, not just the 18px dot.
   &:has(input:checked) {
-    background: $color-primary;
-    border-color: $color-ink-blue;
+    background: $color-paper;
+    border-color: $color-text;
     font-weight: $font-weight-bold;
   }
 
@@ -436,8 +443,8 @@ select {
   // and sits flush so it doesn't float off the edge as a second border.
   &:has(input:focus-visible) {
     outline: none;
-    border-color: $color-ink-blue;
-    box-shadow: 0 0 0 $focus-width rgba($color-ink-blue, 0.28);
+    border-color: $color-accent-ink;
+    box-shadow: 0 0 0 $focus-width $color-gold;
   }
 }
 
@@ -454,15 +461,21 @@ button {
   font-size: $font-size-md;
   font-weight: $font-weight-bold;
   letter-spacing: 0.72px;
-  color: $color-on-primary;
-  background: $color-primary;
-  border: $border-width solid $color-ink-blue;
+  // Inverted: $color-primary is night, which would vanish into the band.
+  color: $color-night;
+  background: $color-paper;
+  border: 0;
   border-radius: $radius;
   cursor: pointer;
   transition: background-color 120ms ease, transform 80ms ease;
 
   &:hover:not(:disabled) {
-    background: color-mix(in srgb, $color-primary 82%, $color-ink-blue);
+    background: $color-sage;
+  }
+
+  // The global olive ring has no contrast on night.
+  &:focus-visible {
+    outline-color: $color-gold;
   }
 
   &:active:not(:disabled) {
@@ -478,7 +491,7 @@ button {
 .submit__hint {
   margin: $space-md 0 0;
   font-size: $font-size-xs;
-  color: $color-muted;
+  color: $color-sage;
 }
 
 // ---- Messages --------------------------------------------------------------
@@ -490,14 +503,15 @@ button {
   &--ok {
     margin: 0;
     font-size: $font-size-md;
-    color: $color-success;
+    color: $color-gold;
     // It's focused on success; the global ring would otherwise draw around a
     // full-width paragraph.
     outline: none;
   }
 
   &--err {
-    color: $color-error;
+    // $color-error is 2.8:1 on night; lifted toward paper it's 8.7:1.
+    color: color-mix(in srgb, $color-error 40%, $color-paper);
   }
 }
 </style>

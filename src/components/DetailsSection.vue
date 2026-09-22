@@ -1,11 +1,12 @@
 <template>
   <section class="details" aria-labelledby="details-heading">
+    <img class="details__icon" :src="walkIcon" width="202" height="112" alt="" />
     <h2 id="details-heading" class="details__heading">Location</h2>
 
-    <p class="details__venue">Conrad Singapore Marina Bay</p>
+    <p class="details__venue">Conrad Singapore<br />Marina Bay</p>
 
     <address class="details__address">
-      The Pavilion, 4th floor by the pool<br />
+      The Pavilion, 4th floor<br />
       2 Temasek Blvd<br />
       Singapore 038982
     </address>
@@ -19,45 +20,52 @@
       rel="noopener noreferrer"
     >
       Open in Maps
-      <span class="details__map-hint">(opens in a new tab)</span>
+      <span class="visually-hidden">(opens in a new tab)</span>
     </a>
   </section>
 </template>
+
+<script setup>
+import walkIcon from '../assets/walk-icon.webp'
+</script>
 
 <style scoped lang="scss">
 @use 'tokens' as *;
 
 .details {
   @include section;
-  // Hairlines rather than a filled card: the venue is something you read, and
-  // the RSVP panel below is the only block on the page that should look
-  // interactive. The inset from the rules is the mixin's padding.
-  border-top: $border-width solid $color-rule;
-  border-bottom: $border-width solid $color-rule;
+  // The photo above already hangs 17% of itself into this band, so the top
+  // edge here only needs to clear the tail of its lettering.
+  padding-top: 24px;
+  padding-bottom: 60px;
+  background: $color-sage;
+}
+
+.details__icon {
+  display: block;
+  width: 60px;
+  height: auto;
+  margin: 0 auto $space-xs;
 }
 
 .details__heading {
   @include eyebrow;
-  margin: 0 0 $space-lg;
+  margin: 0 0 $space-xxl;
 }
 
 // The one line most likely to be screenshotted and shown to a driver, so it
 // carries the most weight in the block.
 .details__venue {
-  margin: 0 0 $space-sm;
-  font-size: $font-size-lg;
-  font-weight: $font-weight-bold;
-  line-height: 1.2;
-  text-wrap: balance;
+  @include heading;
+  margin: 0 0 $space-xl;
 }
 
 .details__address {
-  // <address> is italic by default in every browser, and no italic face is
-  // loaded -- left alone it would render as a synthesised oblique.
+  // <address> is italic by default in every browser.
   font-style: normal;
-  font-size: $font-size-md;
+  font-size: $font-size-base;
   line-height: 1.6;
-  color: $color-muted;
+  color: $color-text;
 }
 
 .details__map {
@@ -65,32 +73,18 @@
   align-items: center;
   // 44px so it's a comfortable touch target, not just a link.
   min-height: 44px;
-  margin-top: $space-xl;
-  padding: 0 $space-xl;
-  font-size: $font-size-sm;
-  font-weight: $font-weight-bold;
-  letter-spacing: 0.84px;
-  text-transform: uppercase;
+  margin-top: $space-xxl;
+  padding: 0 $space-3xl;
+  font-size: $font-size-md;
   text-decoration: none;
-  color: $color-ink-blue;
-  border: $border-width solid $color-border;
+  // Gold on night, like the lettering on the photos.
+  color: $color-gold;
+  background: $color-primary;
   border-radius: $radius;
-  transition: background-color 120ms ease, border-color 120ms ease;
+  transition: background-color 120ms ease;
 
   &:hover {
-    background: $color-panel;
-    border-color: $color-ink-blue;
+    background: color-mix(in srgb, $color-primary 80%, $color-sage);
   }
-}
-
-// Warns screen reader users about the new tab without cluttering the button.
-.details__map-hint {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 </style>

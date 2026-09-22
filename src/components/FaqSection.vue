@@ -25,7 +25,7 @@ const faqs = [
     a: [
       {
         who: '',
-        text: 'Come by at 11:30am for canapés and mocktails at the Pavilion Foyer. Doors open at 12:00pm.\nIf you wish to attend the tea ceremony, please arrive at 10:30am at the Salon room on Level 2.',
+        text: 'Come by at 11:30am for canapés and mocktails at the Pavilion Foyer.\nDoors open at 12:00pm.\nIf you wish to attend the tea ceremony, please arrive at 10:30am at the Salon room on Level 2.',
       },
     ],
   },
@@ -41,8 +41,8 @@ const faqs = [
   {
     q: 'What should I wear?',
     a: [
-      { who: 'Ashlyn', text: "Surprise us. Just don't come naked." },
-      { who: 'Ethan', text: 'Delight us. Come naked.' },
+      { who: 'Ashlyn:', text: "Surprise us. Just don't come naked." },
+      { who: 'Ethan:', text: 'Delight us. Come naked.' },
     ],
   },
   {
@@ -58,23 +58,23 @@ const faqs = [
     q: 'What about gifts?',
     a: [
       {
-        who: 'Ashlyn',
+        who: 'Ashlyn:',
         text: "Just come, eat well, and enjoy the day with us.",
       },
-      { who: 'Ethan', text: 'Could use a lamborghini.' },
+      { who: 'Ethan:', text: 'Could use a lamborghini.' },
     ],
   },
   {
     q: 'When does it end?',
     a: [
-      { who: 'Ashlyn', text: "We'll set you free by 3:30 pm." },
-      { who: 'Ethan', text: "When I get my lamborghini." },
+      { who: 'Ashlyn:', text: "We'll set you free by 3:30 pm." },
+      { who: 'Ethan:', text: "When I get my lamborghini." },
     ],
   },
   {
     q: 'What if I get bored?',
     a: [
-      { who: 'Ethan', text: "It's 12.12 go buy yourself something on Shopee." },
+      { who: 'Ethan:', text: "It's 12.12, go buy yourself something on Shopee." },
     ],
   },
 ]
@@ -86,13 +86,12 @@ const faqs = [
 .faq {
   // A left-aligned list; the heading centres itself below.
   @include section(left);
+  background: $color-paper;
 }
 
 .faq__heading {
-  margin: 0 0 $space-xl;
-  font-size: $font-size-lg;
-  font-weight: $font-weight-bold;
-  line-height: 1.1;
+  @include heading;
+  margin: 0 0 $space-3xl;
   text-align: center;
 }
 
@@ -138,7 +137,7 @@ const faqs = [
   font-size: $font-size-sm;
   font-weight: $font-weight-bold;
   letter-spacing: 0.56px;
-  color: $color-ink-blue;
+  color: $color-accent-ink;
   // Holds the two names to the same column width so their answers line up.
   // Wide enough for "Ashlyn", the longer of them.
   min-width: 6.5ch;
